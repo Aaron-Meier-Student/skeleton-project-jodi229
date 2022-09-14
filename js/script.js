@@ -134,6 +134,8 @@
             tagSlct.insertAdjacentHTML('beforeend', newOption(el));
         });
 
+        setUpSearch(tagOptions.names);
+
         checkBoxs = Array.from(document.querySelectorAll('.check-box-hld input'));
 
         //Prepare filters...
