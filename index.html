@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Jane and Elvis</title>
+</head>
+<body>
+    <div class="flex-page">
+        <div>
+            <div class="search-area">
+                <div class="search-box">
+                    <select class="order">
+                        <option value="newest" selected>Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                    <a href="#advanced">advanced</a>
+                    <select class="person"></select>
+                </div>
+                <div class="advanced-srch" id="advanced">
+                    <div>
+                        <div class="filter-classes checkbox-list"></div>
+                        <div>
+                            <div class="date-holder">
+                                <span>Picture Taken Within: </span>
+                                <input type="date" id="date-1" autocomplete="off">
+                                -
+                                <input type="date" id="date-2" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="sort-names-box">
+                          <div>
+                            <span>Sort By:</span>
+                            <select id="nameSortBy" autocomplete="off">
+                                <option value="0" selected>firstname</option>
+                                <option value="1">lastname</option>
+                            </select>
+                          </div>
+                          <div>
+                            <input type="text"/>
+                          </div>
+                          <div>
+                            <span>Sort Order:</span>
+                            <select id="sortOrder" autocomplete="off">
+                                <option value="1" selected>ascending</option>
+                                <option value="-1">descending</option>
+                            </select>
+                          </div>
+                        </div>
+                        <span></span>
+                        <!-- the empty node aboves allows my every other styling to work... -->
+                        <div class="names-list checkbox-list"></div>
+                    </div>
+                    <div class="apply-filters-box">
+                        <a href="#">Apply</a>
+                    </div>
+                </div>
+                <div class="results-msg">
+                    Results Selected: 
+                    <span>
+                        <span id="resultsNum">000</span> / 
+                        <span id="resultsTotal">000</span>
+                    </span>
+                </div>
+            </div>
+            <a href="#" class="home-btn">&#8679;</a>
+            <div class="content"></div>
+            <div class="img-view-back">
+                <div class="success">Success!</div>
+                <button class="back" onclick="this.parentNode.style.display = 'none';">Go Back!</button>
+                <div class="img-view">
+                    <div class="img-area">
+                        <div class="fullscreen-btn">toggle fullscreen</div>
+                        <div class="img-loading-msg">Image is loading...</div>
+                        <div class="img-arrow arrow-left">&#10096;</div>
+                        <img/>
+                        <div class="img-arrow arrow-right">&#10097;</div>
+                    </div>
+                    <div class="img-options">
+                        <a href="" download><button>Download Image</button></a>
+                        <button class="img-loc">Copy Image Location</button>
+                        <a href="" target="_blank" id="newTabBtn"><button>Open Image</button></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Hidden Form for uploading. -->
+            <form class="admin-psswrd" action="passwordCorrect.php" method="post" enctype="multipart/form-data">
+                <h1>Entereth thy password</h1>
+                <input type="password" name="password" id="password">
+                <input type="submit" value="Log In.">
+            </form>
+            <!-- <a href="#" class="home-btn">&#8679;</a> -->
+        </div>
+        <div class="hidden-pics-btn-holder">
+            <div class="big-btn">Show hidden pictures.</div>
+        </div>    
+    </div>
+    <script src="./js/options.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/search.js"></script>
+    <script>
+        
+    </script>
+</body>
+</html>
