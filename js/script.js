@@ -134,10 +134,11 @@
             tagSlct.insertAdjacentHTML('beforeend', newOption(el));
         });
 
-        setUpSearch(tagOptions.names);
-
+        
         checkBoxs = Array.from(document.querySelectorAll('.check-box-hld input'));
-
+        
+        setUpSearch(tagOptions.names, checkBoxs);
+        
         //Prepare filters...
         setFilters();
         tagSlct.addEventListener('change', setFilters);
@@ -174,7 +175,8 @@
                         el.dataset.type = 'out';
                     })
                 }
-                setFilters(el);
+                // setFilters(el);
+                setFilters(el, el.parentNode);
             })
         });
 
@@ -249,7 +251,8 @@
         }, 1000)
     }
 
-    function setFilters (e) {
+    // function setFilters (e) {
+    window.setFilters = function (e, itemChanged) {
         imgsClass = imgClassBase;
         noIncludeList = [];
         if(tagSlct.value !== 'All') imgsClass += `.${tagSlct.value}`;
@@ -262,7 +265,7 @@
             if (checkbox.checked) {
                 checkbox.parentNode.classList.add('checked');
                 
-                if (checkbox === e?.target || checkbox.parentNode.parentNode === e) {
+                if (checkbox === e?.target || checkbox === itemChanged) {
                     checkbox.parentNode.classList.add(`with${checkbox.dataset.type || ''}`);
                     checkbox.dataset.type = checkbox.dataset.type ? '' : 'out';
                 }

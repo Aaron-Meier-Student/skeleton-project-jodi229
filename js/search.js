@@ -1,20 +1,19 @@
 
 
-function setUpSearch (data) {
+function setUpSearch (names, checkBoxes) {
     const namesList = document.getElementById('namesList');
     const nameSearch = document.getElementById('nameSearch');
     const form = document.getElementById('searchNamesForm');
 
-
-    data.forEach(name => {
+    names.forEach(name => {
         namesList.insertAdjacentHTML('beforeend', `<option>${name}</option>`);
     });
 
     nameSearch.addEventListener('change', e => {
         nameSearch.setCustomValidity('');
-        if(data.indexOf(nameSearch.value) >= 0 || !nameSearch.value) return;
+        if(names.indexOf(nameSearch.value) >= 0 || !nameSearch.value) return;
 
-        const noMatches = data.every(name => {
+        const noMatches = names.every(name => {
             if (!name.toLowerCase().includes(nameSearch.value.toLowerCase())) return true;
             nameSearch.value = name;
             return false;
@@ -30,6 +29,16 @@ function setUpSearch (data) {
         if (!nameSearch.value) return;
 
         console.log(nameSearch.value);
+
+        for (let i = 0; i < checkBoxes.length; i++) {
+            const checkbox = checkBoxes[i];
+            if (checkbox.parentNode.textContent.trim() === nameSearch.value) {
+                checkbox.checked = !checkbox.checked;
+                setFilters({}, checkbox);
+                break;
+            }
+        }
+
         nameSearch.value = '';
     });
 }
