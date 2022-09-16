@@ -28,13 +28,11 @@ function setUpSearch (names, checkBoxes) {
         e.preventDefault();
         if (!nameSearch.value) return;
 
-        console.log(nameSearch.value);
-
         for (let i = 0; i < checkBoxes.length; i++) {
             const checkbox = checkBoxes[i];
             if (checkbox.parentNode.textContent.trim() === nameSearch.value) {
                 checkbox.checked = !checkbox.checked;
-                setFilters({}, checkbox);
+                setFilters({}, checkbox.outerHTML);
                 break;
             }
         }

@@ -176,7 +176,9 @@
                     })
                 }
                 // setFilters(el);
-                setFilters(el, el.parentNode);
+
+
+                setFilters({}, correctCheckboxes.map(el => el.outerHTML).join(''));
             })
         });
 
@@ -265,7 +267,7 @@
             if (checkbox.checked) {
                 checkbox.parentNode.classList.add('checked');
                 
-                if (checkbox === e?.target || checkbox === itemChanged) {
+                if (checkbox === e?.target || (itemChanged && itemChanged.includes(checkbox.outerHTML))) {
                     checkbox.parentNode.classList.add(`with${checkbox.dataset.type || ''}`);
                     checkbox.dataset.type = checkbox.dataset.type ? '' : 'out';
                 }

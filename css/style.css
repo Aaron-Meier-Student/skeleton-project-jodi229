@@ -58,6 +58,10 @@
     padding: 0.4em;
 }
 
+.advanced-srch input[type="text"] {
+    padding: 0.2em;
+}
+
 .advanced-srch:target {
     display: flex;
 }
