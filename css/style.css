@@ -49,17 +49,12 @@
     flex-direction: column;
     justify-content: space-between;
     left: 2.5vw;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 2.5vh;;
     width: 95vw;
-    max-height: 95vh;
+    height: 95vh;
     z-index: 1000;
     background-color: black;
     padding: 0.4em;
-}
-
-.advanced-srch input[type="text"] {
-    padding: 0.2em;
 }
 
 .advanced-srch:target {
@@ -514,7 +509,7 @@
 /************************************************/
 
 
-.admin-psswrd {
+form {
     width: 95%;
     margin-left: 2.5%;
     padding: .4em;
@@ -522,7 +517,7 @@
     text-align: center;
 }
 
-.admin-psswrd>* {
+form>* {
     padding: .2em;
     font-size: 120%;
     margin-top: 1em;
@@ -533,7 +528,7 @@ h1 {
     font-size: 200%;
 }
 
-.admin-psswrd input[type="file"],
+form input[type="file"],
 input[type="submit"] {
     cursor: pointer;
 }

@@ -1,0 +1,63 @@
+
+.flex-center {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    width: 32em;
+    padding: 2em;
+    margin: 1em;
+    border-radius: 2em;
+    background-color: lightgray;
+}
+
+.border-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+    margin-bottom: 1em;
+}
+
+.new-tag-holder {
+    align-items: start;
+    flex-direction: column;
+}
+
+.new-tag-holder input {
+    padding: 0.1em;
+    margin-bottom: 0.3em;
+}
+
+.filter-classes,
+.checkbox-list {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1em;
+    padding-top: 0;
+}
+
+.checkbox-list > div {
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+.wide-btn {
+    width: 80%;
+    margin-left: 10% !important;
+    margin-bottom: 1em;
+}
+
+button {
+    padding: 0.5em;
+    cursor: pointer;
+    float: right;
+}
+
+@media only screen and (max-width: 32em) {
+    .content { width: 100%; }
+}
+

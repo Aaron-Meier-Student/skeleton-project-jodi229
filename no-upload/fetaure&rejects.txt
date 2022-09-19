@@ -1,0 +1,123 @@
+
+
+I chose to use "createElement" instead of using ths, but I think this looks nicer....
+
+document.querySelector('.imgs').insertAdjacentHTML('beforeend', `
+    <div
+        class="pic-item ${newPic.tags.join(' ')}"
+        data-lazy="url('${newPic.src}')"
+        data-date="${newPic.date}"
+    ></div>
+`);
+
+don't wanna lose these....
+
+
+<div class="pic-item group off-season " data-lazy="url('images/july-3rd.jpeg')" data-date="07/03/21"></div>
+<div class="pic-item meet in-season track solo " data-lazy="url('images/2021-06-05.jpg')" data-date="06/04/2021"></div>
+<div class="pic-item group in-season XC summer-training practice " data-lazy="url('images/the-last-thing-you-see-before-you-die.png')" data-date="07/08/21"></div>
+<div class="pic-item group off-season " data-lazy="url('images/beach.jpg')" data-date="06/09/21"></div>
+<div class="pic-item group in-season XC practice summer-training" data-lazy="url('images/Smiles-of-John-not-being-there.jpg')" data-date="07/08/21"></div>
+<div class="pic-item group in-season XC summer-training new-J-squad" data-lazy="url('images/new-j-squad.jpg')" data-date="07/23/21"></div>
+<div class="pic-item group in-season XC summer-training new-J-squad " data-lazy="url('images/new-j-squad-2.jpg')" data-date="07/23/21"></div>
+<div class="pic-item group in-season XC summer-training new-J-squad " data-lazy="url('images/new-j-squad-on-a-rock.jpg')" data-date="07/23/21"></div>
+<div class="pic-item group in-season XC summer-training new-J-squad " data-lazy="url('images/austin-looks-kind-tall.jpg')" data-date="07/23/21"></div>
+<div class="pic-item group in-season XC summer-training new-J-squad " data-lazy="url('images/new-j-squad-3.jpg')" data-date="07/23/21"></div>
+<div class="pic-item group in-season XC " data-lazy="url('images/base-ball-1.jpg')" data-date="09/07/21"></div>
+<div class="pic-item team meet in-season XC " data-lazy="url('images/race-1-21.jpg')" data-date="08/23/21"></div>
+<div class="pic-item group in-season XC practice " data-lazy="url('images/scrimage-team-red.jpg')" data-date="08/13/21"></div>
+<div class="pic-item group in-season XC " data-lazy="url('images/dorks.jpg')" data-date="09/07/21"></div>
+<div class="pic-item group in-season XC event" data-lazy="url('images/floating-hand.jpg')" data-date="09/07/21"></div>
+<div class="pic-item group in-season XC event " data-lazy="url('images/hand-part-2.jpg')" data-date="09/07/21"></div>
+<div class="pic-item group in-season XC event " data-lazy="url('images/baseball.jpg')" data-date="09/07/21"></div>
+<div class="pic-item group in-season XC event " data-lazy="url('images/da-bois.jpg')" data-date="09/07/21"></div>
+
+
+
+
+
+
+//                 $jsDataFile = fopen("js/data.js", "r");
+//                 $fileContent = fread($jsDataFile, filesize("js/data.js"));
+//                 $updatedJsData = str_replace(
+//                     "}\n];",
+//     '},
+//     {
+//         tags: ['.$tags.'],
+//         src: "images/'.$_FILES["fileToUpload"]["name"].'",
+//         date: "'.$_POST["date"].'"
+//     }
+// ];',
+//                     $fileContent
+//                 );
+//                 fclose($jsDataFile);
+//                 $fileToWrite = fopen("js/data.js", "w");
+
+//                 fwrite($fileToWrite, $updatedJsData);
+
+//                 fclose($fileToWrite);
+
+
+//PRINT IMAGE
+document.querySelector('.img-print').addEventListener('click', () => {
+    const win = window.open('');
+    win.document.write(`<img src="${img.src}" onload="window.print();window.close()" />`);
+    // win.location.href = img.src;
+    win.focus();
+})
+
+//tech assingnemnt
+
+    // Console.WriteLine("Type the number of the weapon that you would like to learn about.");
+    // Console.WriteLine("Type 'done' to exit and choose your weapon.");
+
+    // string userResponse;
+    // do {
+    //   int weaponNum;
+    //   userResponse = Console.ReadLine();
+    //   if (userResponse.All(char.IsDigit)) {
+    //     weaponNum = Convert.ToInt32(userResponse);
+    //     if (weaponNum < 1 || weaponNum > weaponNames.Length) {
+    //       Console.WriteLine("Please choose a number between 1 and " + weaponNames.Length);
+    //     } else {
+    //       Console.WriteLine($"The {weaponNames[weaponNum - 1]} will do {weaponDamage[weaponNum - 1]}% damage, but can only be used {weaponLives[weaponNum - 1]}.");
+    //     }
+    //   } else if (userResponse != "done") {
+    //     Console.WriteLine("Please choose a number, or type 'done' to exit.");
+    //   }
+    // }
+    // while (userResponse != "done");
+
+    // Console.WriteLine("Type the number of your first weapon choice.");
+  
+  // string weaponsChoices = string[2];
+
+
+
+
+[
+  "Coach Scully",
+  "Haegan Land",
+  "Ike Schoenborn",
+  "Isaac Skinner",
+  "Jack Major",
+  "Kaelan Miller",
+  "Noah Lewandowski",
+  "Stratton Land",
+  "Daisy Speet",
+  "Elicia Land",
+  "Evie Hakes",
+  "Jana Stiffler",
+  "Meghan VanDalen",
+  "Molly Finkler",
+  "Stephanie DiPiazza",
+  "Suzannah DiPiazza",
+  "Grace Shomsky",
+  "Natalie Fenske",
+  "Eli Skinner",
+  "Sinead Noonan",
+  "Ava Skinner",
+  "Dominic Klaes",
+  "Isaac Kortz",
+  "Maya Willard"
+]
