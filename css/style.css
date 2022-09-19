@@ -509,7 +509,7 @@
 /************************************************/
 
 
-form {
+.admin-psswrd {
     width: 95%;
     margin-left: 2.5%;
     padding: .4em;
@@ -517,7 +517,7 @@ form {
     text-align: center;
 }
 
-form>* {
+.admin-psswrd>* {
     padding: .2em;
     font-size: 120%;
     margin-top: 1em;
@@ -528,10 +528,11 @@ h1 {
     font-size: 200%;
 }
 
-form input[type="file"],
+.admin-psswrd input[type="file"],
 input[type="submit"] {
     cursor: pointer;
 }
+
 
 .upload-btn {
     display: block;
