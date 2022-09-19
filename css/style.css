@@ -49,12 +49,17 @@
     flex-direction: column;
     justify-content: space-between;
     left: 2.5vw;
-    top: 2.5vh;;
+    top: 50%;
+    transform: translateY(-50%);
     width: 95vw;
-    height: 95vh;
+    max-height: 95vh;
     z-index: 1000;
     background-color: black;
     padding: 0.4em;
+}
+
+.advanced-srch input[type="text"] {
+    padding: 0.2em;
 }
 
 .advanced-srch:target {
@@ -532,7 +537,6 @@ h1 {
 input[type="submit"] {
     cursor: pointer;
 }
-
 
 .upload-btn {
     display: block;
