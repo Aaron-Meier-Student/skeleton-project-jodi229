@@ -134,8 +134,11 @@
             tagSlct.insertAdjacentHTML('beforeend', newOption(el));
         });
 
+        
         checkBoxs = Array.from(document.querySelectorAll('.check-box-hld input'));
-
+        
+        setUpSearch(tagOptions.names, checkBoxs);
+        
         //Prepare filters...
         setFilters();
         tagSlct.addEventListener('change', setFilters);
@@ -172,7 +175,10 @@
                         el.dataset.type = 'out';
                     })
                 }
-                setFilters(el);
+                // setFilters(el);
+
+
+                setFilters({}, correctCheckboxes.map(el => el.outerHTML).join(''));
             })
         });
 
@@ -247,7 +253,8 @@
         }, 1000)
     }
 
-    function setFilters (e) {
+    // function setFilters (e) {
+    window.setFilters = function (e, itemChanged) {
         imgsClass = imgClassBase;
         noIncludeList = [];
         if(tagSlct.value !== 'All') imgsClass += `.${tagSlct.value}`;
@@ -260,7 +267,7 @@
             if (checkbox.checked) {
                 checkbox.parentNode.classList.add('checked');
                 
-                if (checkbox === e?.target || checkbox.parentNode.parentNode === e) {
+                if (checkbox === e?.target || (itemChanged && itemChanged.includes(checkbox.outerHTML))) {
                     checkbox.parentNode.classList.add(`with${checkbox.dataset.type || ''}`);
                     checkbox.dataset.type = checkbox.dataset.type ? '' : 'out';
                 }
@@ -344,9 +351,9 @@
         if (!newPic) return false;
 
         newPic.className = `pic-item ${newPic.tags.join(' ')} ${newPic.names.join(' ')}`;
-        // data-lazy="url('${newPic.src}')"
         posInArr++;
-
+        // data-lazy="url('${newPic.src}')"
+        
         const newDiv = `
             <div 
                 class="${newPic.className}" 
