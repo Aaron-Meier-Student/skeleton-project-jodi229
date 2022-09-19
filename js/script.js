@@ -2,7 +2,7 @@
 (async function () {
     // let pictures = JSON.parse(await fetch(`${location.origin}/data/data.json`).then(data => data.text()).then(text => text));
     
-    let pictures = JSON.parse(await fetch(`https://jannaandalesha.000webhostapp.com/data/data.json`).then(data => data.text()).then(text => text));
+    let pictures = JSON.parse(await fetch(`https://grtcfamily.com/data/data.json`).then(data => data.text()).then(text => text));
     
     const content = document.querySelector('.content');
     const showPicsBtn = document.querySelector('.hidden-pics-btn-holder > div');
@@ -55,7 +55,7 @@
             loadingMsg.style.display = 'none';
         }
         // displayedImg.src = document.getElementById(`pic-${picInd}`).dataset.src;
-        displayedImg.src = 'https://jannaandalesha.000webhostapp.com/' + document.getElementById(`pic-${picInd}`).dataset.src;
+        displayedImg.src = 'https://grtcfamily.com/' + document.getElementById(`pic-${picInd}`).dataset.src;
         displayedImg.dataset.picInd = picInd;
         
         shadyBack.style.display = 'block';
@@ -350,7 +350,7 @@
         const newDiv = `
             <div 
                 class="${newPic.className}" 
-                data-lazy="url('https://jannaandalesha.000webhostapp.com/${newPic.src}')"
+                data-lazy="url('https://grtcfamily.com/${newPic.src}')"
                 data-src="${newPic.src}"
                 data-date="${newPic.date}"
             ></div>
