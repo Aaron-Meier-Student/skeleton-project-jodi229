@@ -30,10 +30,11 @@ function fillCheckBoxes (parntClass, data = [], formName, remove) {
 }
 
 function newCheckbox (val, formName, remove) {
+    const id = Math.random().toString().replace('.','');
     return `
         <div class="check-box-hld">
-            <input name="${formName}${remove?'Remove':''}[]" type="checkbox" id="${formName}-${val}" value="${val}">
-            <label for="${formName}-${val}">${val}</label>
+            <input name="${formName}${remove?'Remove':''}[]" type="checkbox" id="${id}" value="${val}">
+            <label for="${id}">${val}</label>
         </div>
     `;
 }
