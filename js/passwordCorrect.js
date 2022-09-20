@@ -4,8 +4,6 @@
 
     const options = await loadOptions();
     options.setupCheckBoxes();
-
-    // (await loadOptions('.remove-tags-list', false, '.remove-names-list')).setupCheckBoxes();
     options.setupCheckBoxes('.remove-tags-list', '.remove-names-list', false);
 
     const checkboxes = Array.from(document.querySelectorAll('.filter-classes input'));
@@ -55,6 +53,8 @@
         `;
     }
 
+    setUpSearch(options.names, checkboxes);
+
     //UPDATE TAGS SECTION
 
     const dataType = ['Name', 'Tag'];
@@ -96,10 +96,10 @@
     //swith between forms.
     let currentForm = uploadPicFrm;
 
-    document.querySelectorAll('.chngForm').forEach(el => el.addEventListener('click', e => {
+    document.querySelectorAll('.chngForm').forEach(btn => btn.addEventListener('click', e => {
         currentForm.style.display = 'none';
 
-        const newForm = document.querySelector(`.${el.dataset.formclass}-form`);
+        const newForm = document.querySelector(`.${btn.dataset.formclass}-form`);
         newForm.style.display = 'block';
         currentForm = newForm;
     }));
