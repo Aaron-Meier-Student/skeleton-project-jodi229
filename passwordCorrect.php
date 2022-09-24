@@ -29,6 +29,11 @@
                             <button class="new-tag-btn" type="button">add another new tag</button>
                         </div>
 
+                        <div class="search-area">
+                            <input form="searchNamesForm" type="text" id="nameSearch" list="namesList" placeholder="Search for names here...">
+                            <datalist id="namesList"></datalist>
+                        </div>
+
                         <div class="names-list checkbox-list"></div>
                         <div class="modify-area">
                             <div>
@@ -48,6 +53,7 @@
                     <span class="changeFormBtn chngForm" id="chngTagsFrmBtn" data-formClass="update-tags">Update Existing Tags</span>
                 </div>
             </form>
+
             <form action="pictureForm.php" method="post" class="update-pic-form">
                 <div class="choose-feature-area">
                     <label for="fileInput">Name of file to update:</label>
@@ -64,6 +70,7 @@
                     <button class="changeFormBtn">Select File</button>
                 </div>
             </form>
+
             <form action="updateTags.php" method="POST" enctype="multipart/form-data" class="update-tags-form">
                 <input style="display: none;" type="password" name="password" id="password" value="its24-hourtime">
                 
@@ -97,6 +104,7 @@
                     <button class="changeFormBtn">Submit</button>
                 </div>
             </form>
+            <form data-simple="true" id="searchNamesForm" style="display: none;"></form>
             ';
         } else {
             $details = 
