@@ -53,7 +53,7 @@
         `;
     }
 
-    setUpSearch(options.names, checkboxes);
+    setUpSearch(options.names, document.querySelectorAll('.names-list input'));
 
     //UPDATE TAGS SECTION
 
