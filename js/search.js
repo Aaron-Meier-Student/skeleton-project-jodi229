@@ -29,13 +29,8 @@ function setUpSearch (names, checkBoxes) {
         form.addEventListener('submit', e => {
             selectCheckBox(e);
         });
-    } else {
-        document.body.addEventListener('keydown', e => {
-            if (e.key === 'Enter') {
-                selectCheckBox(e, true);
-            }
-        })
-    }
+    }    
+   
 
     function selectCheckBox (e, dontCall) {
         e.preventDefault();
@@ -44,13 +39,10 @@ function setUpSearch (names, checkBoxes) {
 
         for (let i = 0; i < checkBoxes.length; i++) {
             const checkbox = checkBoxes[i];
-            // if (checkbox.parentNode.textContent.trim() === nameSearch.value) {
-
-            console.log(checkbox.value, nameSearch.value);
 
             if (checkbox.value === nameSearch.value) {
                 checkbox.checked = !checkbox.checked;
-                dontCall || setFilters({}, checkbox.outerHTML);
+                form.dataset.simple || setFilters({}, checkbox.outerHTML);
                 break;
             }
         }
