@@ -2,7 +2,7 @@
 (async function () {
     // let pictures = JSON.parse(await fetch(`${location.origin}/data/data.json`).then(data => data.text()).then(text => text));
     
-    let pictures = JSON.parse(await fetch(`https://jannaandalesha.000webhostapp.com/data/data.json`).then(data => data.text()).then(text => text));
+    let pictures = JSON.parse(await fetch(`https://grtcfamily.com/data/data.json`).then(data => data.text()).then(text => text));
     
     const content = document.querySelector('.content');
     const showPicsBtn = document.querySelector('.hidden-pics-btn-holder > div');
@@ -55,7 +55,7 @@
             loadingMsg.style.display = 'none';
         }
         // displayedImg.src = document.getElementById(`pic-${picInd}`).dataset.src;
-        displayedImg.src = 'https://jannaandalesha.000webhostapp.com/' + document.getElementById(`pic-${picInd}`).dataset.src;
+        displayedImg.src = 'https://grtcfamily.com/' + document.getElementById(`pic-${picInd}`).dataset.src;
         displayedImg.dataset.picInd = picInd;
         
         shadyBack.style.display = 'block';
@@ -134,8 +134,11 @@
             tagSlct.insertAdjacentHTML('beforeend', newOption(el));
         });
 
+        
         checkBoxs = Array.from(document.querySelectorAll('.check-box-hld input'));
-
+        
+        setUpSearch(tagOptions.names, checkBoxs);
+        
         //Prepare filters...
         setFilters();
         tagSlct.addEventListener('change', setFilters);
@@ -172,7 +175,10 @@
                         el.dataset.type = 'out';
                     })
                 }
-                setFilters(el);
+                // setFilters(el);
+
+
+                setFilters({}, correctCheckboxes.map(el => el.outerHTML).join(''));
             })
         });
 
@@ -247,7 +253,8 @@
         }, 1000)
     }
 
-    function setFilters (e) {
+    // function setFilters (e) {
+    window.setFilters = function (e, itemChanged) {
         imgsClass = imgClassBase;
         noIncludeList = [];
         if(tagSlct.value !== 'All') imgsClass += `.${tagSlct.value}`;
@@ -260,7 +267,7 @@
             if (checkbox.checked) {
                 checkbox.parentNode.classList.add('checked');
                 
-                if (checkbox === e?.target || checkbox.parentNode.parentNode === e) {
+                if (checkbox === e?.target || (itemChanged && itemChanged.includes(checkbox.outerHTML))) {
                     checkbox.parentNode.classList.add(`with${checkbox.dataset.type || ''}`);
                     checkbox.dataset.type = checkbox.dataset.type ? '' : 'out';
                 }
@@ -344,13 +351,13 @@
         if (!newPic) return false;
 
         newPic.className = `pic-item ${newPic.tags.join(' ')} ${newPic.names.join(' ')}`;
-        // data-lazy="url('${newPic.src}')"
         posInArr++;
-
+        // data-lazy="url('${newPic.src}')"
+        
         const newDiv = `
             <div 
                 class="${newPic.className}" 
-                data-lazy="url('https://jannaandalesha.000webhostapp.com/${newPic.src}')"
+                data-lazy="url('https://grtcfamily.com/${newPic.src}')"
                 data-src="${newPic.src}"
                 data-date="${newPic.date}"
             ></div>

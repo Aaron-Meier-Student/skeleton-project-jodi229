@@ -2,12 +2,9 @@
 
 (async function () {
 
-    // (await loadOptions()).setupCheckBoxes();
-
     const options = await loadOptions();
     options.setupCheckBoxes();
-
-    (await loadOptions('.remove-tags-list', false, '.remove-names-list')).setupCheckBoxes();
+    options.setupCheckBoxes('.remove-tags-list', '.remove-names-list', false);
 
     const checkboxes = Array.from(document.querySelectorAll('.filter-classes input'));
 
@@ -56,17 +53,18 @@
         `;
     }
 
+    setUpSearch(options.names, document.querySelectorAll('.names-list input'));
+
     //UPDATE TAGS SECTION
 
-    const data2update = ['Name', 'Tag'];
+    const dataType = ['Name', 'Tag'];
     
     const uploadPicFrm = document.querySelector('.upload-pic-form');
-
+    const select = document.getElementById('oldDataSelect');
     const addNewData = document.querySelector('.add-new-data')
         
-    addNewData.innerHTML = addNewDataInput(data2update[1]);
-    
-    const select = document.getElementById('oldDataSelect');
+
+    addNewData.innerHTML = addNewDataInput(dataType[1]);
 
     checkboxes.forEach(el => select.insertAdjacentHTML('beforeend', `
         <option value="${el.value}">${el.value}</option>
@@ -76,11 +74,11 @@
         document.querySelector('.remove-tags-list').classList.toggle('hidden');
         document.querySelector('.remove-names-list').classList.toggle('hidden');
 
-        data2update.reverse();
+        dataType.reverse();
 
-        addNewData.innerHTML = addNewDataInput(data2update[1]);
+        addNewData.innerHTML = addNewDataInput(dataType[1]);
 
-        select.name = select.name.replace(...data2update);
+        select.name = select.name.replace(...dataType);
 
         select.innerHTML = '<option value=""></option>';
 
@@ -88,9 +86,9 @@
             <option value="${el}">${el}</option>
         `));
 
-        select.nextElementSibling.name = select.nextElementSibling.name.replace(...data2update);
+        select.nextElementSibling.name = select.nextElementSibling.name.replace(...dataType);
 
-        document.querySelectorAll('h2').forEach(el => el.textContent = el.textContent.replace(...data2update));
+        document.querySelectorAll('h2').forEach(el => el.textContent = el.textContent.replace(...dataType));
     });
 
     ///////////
@@ -98,10 +96,10 @@
     //swith between forms.
     let currentForm = uploadPicFrm;
 
-    document.querySelectorAll('.chngForm').forEach(el => el.addEventListener('click', e => {
+    document.querySelectorAll('.chngForm').forEach(btn => btn.addEventListener('click', e => {
         currentForm.style.display = 'none';
 
-        const newForm = document.querySelector(`.${el.dataset.formclass}-form`);
+        const newForm = document.querySelector(`.${btn.dataset.formclass}-form`);
         newForm.style.display = 'block';
         currentForm = newForm;
     }));

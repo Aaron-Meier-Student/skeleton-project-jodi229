@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Jane and Elvis</title>
+    <title>GRTC Family</title>
 </head>
 <body>
     <div class="flex-page">
@@ -38,6 +38,10 @@
                                 <option value="1">lastname</option>
                             </select>
                           </div>
+                          <form id="searchNamesForm" autocomplete="off">
+                            <input type="text" id="nameSearch" list="namesList" placeholder="Search for names here...">
+                            <datalist id="namesList"></datalist>
+                          </form>
                           <div>
                             <span>Sort Order:</span>
                             <select id="sortOrder" autocomplete="off">
@@ -47,7 +51,7 @@
                           </div>
                         </div>
                         <span></span>
-                        <!-- the empty node aboves allows my every other styling to work... -->
+                        <!-- the empty node above allows my every other styling to work... -->
                         <div class="names-list checkbox-list"></div>
                     </div>
                     <div class="apply-filters-box">
@@ -82,12 +86,12 @@
                     </div>
                 </div>
             </div>
+            <!-- Hidden Form for uploading. -->
             <form class="admin-psswrd" action="passwordCorrect.php" method="post" enctype="multipart/form-data">
                 <h1>Entereth thy password</h1>
                 <input type="password" name="password" id="password">
                 <input type="submit" value="Log In.">
             </form>
-            <!-- <a href="#" class="home-btn">&#8679;</a> -->
         </div>
         <div class="hidden-pics-btn-holder">
             <div class="big-btn">Show hidden pictures.</div>
@@ -95,5 +99,7 @@
     </div>
     <script src="./js/options.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/keyboard.js"></script>
 </body>
 </html>
