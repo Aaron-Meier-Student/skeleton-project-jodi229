@@ -79,7 +79,7 @@
                     if ($newTagsArr) {
                         $tagsJson = json_decode(file_get_contents('data/tags.json'), true);
 
-                        $tagsJson['tags'] = array_merge($tagsJson['tags'], $newTagsArr);
+                        $tagsJson['tags'] = array_unique(array_merge($tagsJson['tags'], $newTagsArr));
                         
                         file_put_contents('data/tags.json', json_encode($tagsJson));
                     }
@@ -87,7 +87,7 @@
                     if ($newNamesArr) {
                         $namesJson = json_decode(file_get_contents('data/tags.json'), true);
 
-                        $namesJson['names'] = array_merge($namesJson['names'], $newNamesArr);
+                        $namesJson['names'] = array_unique(array_merge($namesJson['names'], $newNamesArr));
                         
                         file_put_contents('data/tags.json', json_encode($namesJson));
                     }
