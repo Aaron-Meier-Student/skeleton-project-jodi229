@@ -123,7 +123,8 @@
             fileName.value = fullText.value.replace(`${location.origin}/images/`, ''); 
         })
     </script>
-    <script src="js/options.js"></script>
-    <script src="js/passwordCorrect.js"></script>
+    <script src="../js/options.js"></script>
+    <script src="../js/passwordCorrect.js"></script>
+    <script src="../js/search.js"></script>
 </body>
 </html>

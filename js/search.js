@@ -32,7 +32,7 @@ function setUpSearch (names, checkBoxes) {
     }    
    
 
-    function selectCheckBox (e, dontCall) {
+    function selectCheckBox (e) {
         e.preventDefault();
 
         if (!nameSearch.value) return;
