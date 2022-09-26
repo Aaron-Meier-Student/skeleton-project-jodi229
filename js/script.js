@@ -1,8 +1,8 @@
 
 (async function () {
     // let pictures = JSON.parse(await fetch(`${location.origin}/data/data.json`).then(data => data.text()).then(text => text));
-    
-    let pictures = JSON.parse(await fetch(`https://grtcfamily.com/data/data.json`).then(data => data.text()).then(text => text));
+    // let pictures = JSON.parse(await fetch(`https://grtcfamily.com/data/data.json`).then(data => data.text()).then(text => text));
+    let pictures = JSON.parse(await fetch(`https://grtcfamily.com/data.php`).then(data => data.text()).then(text => text));
     
     const content = document.querySelector('.content');
     const showPicsBtn = document.querySelector('.hidden-pics-btn-holder > div');
