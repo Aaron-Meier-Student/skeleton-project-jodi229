@@ -6,7 +6,6 @@
     <title>Picture Upload</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/upload.css">
-    <link rel="shortcut icon" href="images/square-jana-fly.ico" type="image/x-icon">
 </head>
 <body>
     <?php
@@ -17,9 +16,6 @@
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
             $uploadOk = 1;
             $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-            
-            $newTagsArr = array_filter($_POST["newTags"]);
-            $newNamesArr = array_filter($_POST["newNames"]);
 
             // Check if image file is an actual image or fake image
             if(isset($_POST["submit"])) {
@@ -59,10 +55,18 @@
                     $picData = json_decode(file_get_contents('data/data.json'));
 
 
+                    $checkBoxTags = $_POST["tags"] ?: array();
+                    $newTagsArr = $_POST["newTags"] ?: array();
+                    $newTagsArr = array_filter($newTagsArr);
+
+                    $checkBoxNames = $_POST["names"] ?: array();
+                    $newNamesArr = $_POST["newNames"] ?: array();
+                    $newNamesArr = array_filter($newNamesArr);
+
                     //insert new obj with new pic's data.
                     array_push($picData, (object) [
-                        'tags' => array_merge($_POST["tags"], $newTagsArr),
-                        'names' => array_merge($_POST["names"], $newNamesArr),
+                        'tags' => array_unique(array_merge($checkBoxTags, $newTagsArr)),
+                        'names' => array_unique(array_merge($checkBoxNames, $newNamesArr)),
                         'src' => 'images/'.$_FILES["fileToUpload"]["name"],
                         'date' => date("m/d/Y", strtotime($_POST["date"]))
                     ]);
@@ -72,7 +76,7 @@
 
 
                     //UPLOAD NEW TAGS
-                    if ($newTagsArr[0]) {
+                    if ($newTagsArr) {
                         $tagsJson = json_decode(file_get_contents('data/tags.json'), true);
 
                         $tagsJson['tags'] = array_merge($tagsJson['tags'], $newTagsArr);
@@ -80,7 +84,7 @@
                         file_put_contents('data/tags.json', json_encode($tagsJson));
                     }
 
-                    if ($newNamesArr[0]) {
+                    if ($newNamesArr) {
                         $namesJson = json_decode(file_get_contents('data/tags.json'), true);
 
                         $namesJson['names'] = array_merge($namesJson['names'], $newNamesArr);
