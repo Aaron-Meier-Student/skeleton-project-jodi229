@@ -46,17 +46,26 @@
                 // if everything is ok, try to upload file
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
                     $details = $details . "<div><i><h4>The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.</h4></i></div>";
-                    
-                    
-                    // $picJSON = file_get_contents('data/data.json');
-                    // $picData = json_decode($picJSON);
-
-
 
                     function combineTagsandUpload ($data) {
-                        $checkBoxData = $_POST[lcfirst($data)] ?: array();
                         $newDataArr = $_POST["new".$data] ?: array();
                         $newDataArr = array_filter($newDataArr);
+                        
+                        $data = lcfirst($data);
+                        $checkBoxData = $_POST[$data] ?: array();
+
+                        //UPLOAD NEW Data
+                        if ($newDataArr) {
+                            $dataJson = json_decode(file_get_contents('data/tags.json'), true);
+
+                            $dataJson[$data] = array_unique(array_merge($dataJson[$data], $newDataArr));
+
+                            if ($data == 'names') {
+                                sort($dataJson[$data]);
+                            }
+                            
+                            file_put_contents('data/tags.json', json_encode($dataJson));
+                        }
 
                         return array_unique(array_merge($checkBoxData, $newDataArr));
                     }
@@ -75,26 +84,6 @@
                     //put obj back into json file.
                     file_put_contents('data/data.json', json_encode($picData));
 
-
-                    //UPLOAD NEW TAGS
-                    if ($newTagsArr) {
-                        $tagsJson = json_decode(file_get_contents('data/tags.json'), true);
-
-                        $tagsJson['tags'] = array_unique(array_merge($tagsJson['tags'], $newTagsArr));
-                        
-                        file_put_contents('data/tags.json', json_encode($tagsJson));
-                    }
-
-                    if ($newNamesArr) {
-                        $namesJson = json_decode(file_get_contents('data/tags.json'), true);
-
-                        $namesJson['names'] = sort(
-                            array_unique(array_merge($namesJson['names'], $newNamesArr))
-                        );
-                        
-                        file_put_contents('data/tags.json', json_encode($namesJson));
-                    }
-
                 } else {
                     $details = $details . "<div>Sorry, there was an error uploading your file.</div>";
                 }
@@ -110,7 +99,7 @@
             <div class="content">
                 <div>' . $details . '</div>
                 <div>
-                    <form action="passwordCorrect.php" method="post"  enctype="multipart/form-data">
+                    <form action="passwordCorrect.php" method="post" enctype="multipart/form-data">
                         '.$password.'
                         <a class="btn" href="/">Go To Homepage</a>
                     </form>
