@@ -4,7 +4,8 @@ let tags, names;
 const loadOptions = async function () {
     if (!tags) {
         // const data = JSON.parse(await fetch(`${location.origin}/data/tags.json`).then(data => data.text()).then(text => text));
-        const data = JSON.parse(await fetch(`https://grtcfamily.com/data/tags.json`).then(data => data.text()).then(text => text));
+        // const data = JSON.parse(await fetch(`https://grtcfamily.com/data/tags.json`).then(data => data.text()).then(text => text));
+        const data = JSON.parse(await fetch(`https://grtcfamily.com/tags.php`).then(data => data.text()).then(text => text));
         tags = data.tags;
         names = data.names;
     }
