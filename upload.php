@@ -87,7 +87,9 @@
                     if ($newNamesArr) {
                         $namesJson = json_decode(file_get_contents('data/tags.json'), true);
 
-                        $namesJson['names'] = array_unique(array_merge($namesJson['names'], $newNamesArr));
+                        $namesJson['names'] = sort(
+                            array_unique(array_merge($namesJson['names'], $newNamesArr))
+                        );
                         
                         file_put_contents('data/tags.json', json_encode($namesJson));
                     }
