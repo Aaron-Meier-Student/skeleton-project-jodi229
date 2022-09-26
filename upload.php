@@ -51,22 +51,23 @@
                     // $picJSON = file_get_contents('data/data.json');
                     // $picData = json_decode($picJSON);
 
+
+
+                    function combineTagsandUpload ($data) {
+                        $checkBoxData = $_POST[lcfirst($data)] ?: array();
+                        $newDataArr = $_POST["new".$data] ?: array();
+                        $newDataArr = array_filter($newDataArr);
+
+                        return array_unique(array_merge($checkBoxData, $newDataArr));
+                    }
+
                     //put json data into obj
                     $picData = json_decode(file_get_contents('data/data.json'));
 
-
-                    $checkBoxTags = $_POST["tags"] ?: array();
-                    $newTagsArr = $_POST["newTags"] ?: array();
-                    $newTagsArr = array_filter($newTagsArr);
-
-                    $checkBoxNames = $_POST["names"] ?: array();
-                    $newNamesArr = $_POST["newNames"] ?: array();
-                    $newNamesArr = array_filter($newNamesArr);
-
                     //insert new obj with new pic's data.
                     array_push($picData, (object) [
-                        'tags' => array_unique(array_merge($checkBoxTags, $newTagsArr)),
-                        'names' => array_unique(array_merge($checkBoxNames, $newNamesArr)),
+                        'tags' => combineTagsandUpload('Tags'),
+                        'names' => combineTagsandUpload('Names'),
                         'src' => 'images/'.$_FILES["fileToUpload"]["name"],
                         'date' => date("m/d/Y", strtotime($_POST["date"]))
                     ]);

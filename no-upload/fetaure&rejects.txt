@@ -121,3 +121,12 @@ document.querySelector('.img-print').addEventListener('click', () => {
   "Isaac Kortz",
   "Maya Willard"
 ]
+
+// $checkBoxTags = $_POST["tags"] ?: array();
+// $newTagsArr = $_POST["newTags"] ?: array();
+// $newTagsArr = array_filter($newTagsArr);
+
+// $checkBoxNames = $_POST["names"] ?: array();
+// $newNamesArr = $_POST["newNames"] ?: array();
+// $newNamesArr = array_filter($newNamesArr);
+
