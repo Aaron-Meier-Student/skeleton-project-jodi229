@@ -67,7 +67,7 @@
      <div class="content">
         <div><?php echo $msg; ?></div>
         <div>
-            <form action="passwordCorrect.php" method="post"  enctype="multipart/form-data">
+            <form action="php/passwordCorrect.php" method="post"  enctype="multipart/form-data">
                 <input type="password" name="password" id="password" value="its24-hourtime">
                 <input class="btn" type="submit" value="Upload/Update Another Picture">
                 <a class="btn" href="/">Go To Homepage</a>

@@ -14,7 +14,7 @@
             $details = 
             '
             <h1>Upload your photo, John.</h1>
-            <form action="upload.php" method="post" enctype="multipart/form-data" class="upload-pic-form" style="display: block;">
+            <form action="php/upload.php" method="post" enctype="multipart/form-data" class="upload-pic-form" style="display: block;">
                 <h3>Select image to upload:</h3>
                 <div>
                     <div class="tags-and-upload">
@@ -54,7 +54,7 @@
                 </div>
             </form>
 
-            <form action="pictureForm.php" method="post" class="update-pic-form">
+            <form action="php/pictureForm.php" method="post" class="update-pic-form">
                 <div class="choose-feature-area">
                     <label for="fileInput">Name of file to update:</label>
                     <input type="text" id="fileInput"/>
@@ -71,7 +71,7 @@
                 </div>
             </form>
 
-            <form action="updateTags.php" method="POST" enctype="multipart/form-data" class="update-tags-form">
+            <form action="php/updateTags.php" method="POST" enctype="multipart/form-data" class="update-tags-form">
                 <input style="display: none;" type="password" name="password" id="password" value="its24-hourtime">
                 
                 <div class="modify-area">

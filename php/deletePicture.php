@@ -45,7 +45,7 @@
             <div class="content">
                 <div>' . $details . '</div>
                 <div>
-                    <form action="passwordCorrect.php" method="post"  enctype="multipart/form-data">
+                    <form action="php/passwordCorrect.php" method="post"  enctype="multipart/form-data">
                         '.$password.'
                         <a class="btn" href="/">Go To Homepage</a>
                     </form>

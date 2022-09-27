@@ -11,7 +11,7 @@
 <body>
     <div class="flex-center">
         <div class="content">
-            <form action="updatePicture.php" method="post">
+            <form action="php/updatePicture.php" method="post">
                 <?php
                     echo '<input style="display: none;" type="password" name="password" id="password" value="'.$_POST["password"].'">'
                 ?>
@@ -56,7 +56,7 @@
                 </div>
                 <input type="text" name="fileName" class="filenameField" style="display: none;">
             </form>
-            <form action="deletePicture.php" method="post" class="delete-form">
+            <form action="php/deletePicture.php" method="post" class="delete-form">
                 <button>Delete Picture</button>
             </form>
         </div>
