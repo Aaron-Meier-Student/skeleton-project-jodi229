@@ -20,7 +20,6 @@
                     <span id="fileName"><?php
                         echo $_POST["fileName"]
                     ?></span>
-                </div>
                 <div class="border-bottom new-tag-holder">
                     <span>Tags to add:</span> <input type="text" class="wide-btn" name="tags[]">
                     <button class="wide-btn" type="button">Another!</button>
@@ -67,12 +66,12 @@
             const nameOfFile = fileName.textContent.trim();
             const inpField = document.querySelector('.filenameField');
             inpField.value = nameOfFile;
-            const delPicForm = document.querySelector('.delete-form');
-                delPicForm.appendChild(inpField.cloneNode());
-                delPicForm.appendChild(password.cloneNode());
-            (await loadOptions()).setupCheckBoxes();
+            document.querySelector('.delete-form').appendChild(inpField.cloneNode());
+
+            const options = await loadOptions();
+            options.setupCheckBoxes();
             // let pictures = JSON.parse(await fetch(`${location.origin}/data.php`).then(data => data.text()).then(text => text));
-            let pictures = JSON.parse(await fetch(`https://jannaandalesha.000webhostapp.com/data.php`).then(data => data.text()).then(text => text));
+            let pictures = JSON.parse(await fetch(`https://grtcfamily.com/data.php`).then(data => data.text()).then(text => text));
 
             for (const pic of pictures) {
                 if (!pic.src.includes(nameOfFile)) continue;
@@ -80,7 +79,8 @@
                 names = pic.names;
                 break;
             }
-            (await loadOptions('.tags-remove', true, '.remove-names-list')).setupCheckBoxes();
+
+            options.setupCheckBoxes('.tags-remove', '.remove-names-list', true);
 
             document.querySelector('.content').addEventListener('click', e => {
                 const btn = e.target.closest('button[type="button"]');
