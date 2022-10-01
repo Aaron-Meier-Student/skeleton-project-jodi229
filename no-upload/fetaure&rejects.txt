@@ -121,3 +121,30 @@ document.querySelector('.img-print').addEventListener('click', () => {
   "Isaac Kortz",
   "Maya Willard"
 ]
+
+// $checkBoxTags = $_POST["tags"] ?: array();
+// $newTagsArr = $_POST["newTags"] ?: array();
+// $newTagsArr = array_filter($newTagsArr);
+
+// $checkBoxNames = $_POST["names"] ?: array();
+// $newNamesArr = $_POST["newNames"] ?: array();
+// $newNamesArr = array_filter($newNamesArr);
+
+//UPLOAD NEW TAGS
+if ($newTagsArr) {
+  $tagsJson = json_decode(file_get_contents('data/tags.json'), true);
+
+  $tagsJson['tags'] = array_unique(array_merge($tagsJson['tags'], $newTagsArr));
+  
+  file_put_contents('data/tags.json', json_encode($tagsJson));
+}
+
+if ($newNamesArr) {
+  $namesJson = json_decode(file_get_contents('data/tags.json'), true);
+
+  $namesJson['names'] = sort(
+      array_unique(array_merge($namesJson['names'], $newNamesArr))
+  );
+  
+  file_put_contents('data/tags.json', json_encode($namesJson));
+}
