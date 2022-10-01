@@ -14,7 +14,7 @@
             <form action="php/updatePicture.php" method="post">
                 <div class="border-bottom">
                     <span>Filename:</span>
-                    <span id="fileName">2021-05-19.jpg</span>
+                    <span id="fileName">the-love-bench.jpg</span>
                 </div>
                 <div class="border-bottom new-tag-holder">
                     <span>Tags to add:</span> <input type="text" class="wide-btn" name="tags[]">
@@ -63,9 +63,11 @@
             const inpField = document.querySelector('.filenameField');
             inpField.value = nameOfFile;
             document.querySelector('.delete-form').appendChild(inpField.cloneNode());
-            (await loadOptions()).setupCheckBoxes();
+
+            const options = await loadOptions();
+            options.setupCheckBoxes();
             // let pictures = JSON.parse(await fetch(`${location.origin}/data.php`).then(data => data.text()).then(text => text));
-            let pictures = JSON.parse(await fetch(`https://jannaandalesha.000webhostapp.com/data.php`).then(data => data.text()).then(text => text));
+            let pictures = JSON.parse(await fetch(`https://grtcfamily.com/data.php`).then(data => data.text()).then(text => text));
 
             for (const pic of pictures) {
                 if (!pic.src.includes(nameOfFile)) continue;
@@ -74,7 +76,7 @@
                 break;
             }
 
-            (await loadOptions('.tags-remove', true, '.remove-names-list')).setupCheckBoxes();
+            options.setupCheckBoxes('.tags-remove', '.remove-names-list', true);
 
             document.querySelector('.content').addEventListener('click', e => {
                 const btn = e.target.closest('button[type="button"]');
