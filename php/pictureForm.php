@@ -20,6 +20,7 @@
                     <span id="fileName"><?php
                         echo $_POST["fileName"]
                     ?></span>
+                </div>                    
                 <div class="border-bottom new-tag-holder">
                     <span>Tags to add:</span> <input type="text" class="wide-btn" name="tags[]">
                     <button class="wide-btn" type="button">Another!</button>
